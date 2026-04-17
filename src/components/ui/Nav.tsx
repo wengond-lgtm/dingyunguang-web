@@ -22,7 +22,6 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  // 关闭菜单当路由变化
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   return (
@@ -30,15 +29,17 @@ export default function Nav() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
-          scrolled ? "bg-white/90 backdrop-blur-sm border-b border-zinc-100" : "bg-transparent"
+          scrolled
+            ? "bg-[#080808]/90 backdrop-blur-md border-b border-white/[0.06]"
+            : "bg-transparent"
         )}
       >
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
           <Link
             href="/"
-            className="text-sm font-medium tracking-tight hover:text-zinc-500 transition-colors"
+            className="text-sm font-mono tracking-widest text-[#e8e8e8] hover:text-[#00F0FF] transition-colors"
           >
-            丁韵光
+            DYG
           </Link>
 
           {/* 桌面导航 */}
@@ -48,10 +49,10 @@ export default function Nav() {
                 key={href}
                 href={href}
                 className={cn(
-                  "text-sm transition-colors",
+                  "text-xs tracking-widest uppercase font-mono transition-colors",
                   pathname.startsWith(href)
-                    ? "text-zinc-900"
-                    : "text-zinc-400 hover:text-zinc-900"
+                    ? "text-[#00F0FF]"
+                    : "text-white/40 hover:text-white/80"
                 )}
               >
                 {label}
@@ -65,9 +66,9 @@ export default function Nav() {
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="菜单"
           >
-            <span className={cn("block w-5 h-px bg-zinc-900 transition-transform duration-200", menuOpen && "translate-y-[7px] rotate-45")} />
-            <span className={cn("block w-5 h-px bg-zinc-900 transition-opacity duration-200", menuOpen && "opacity-0")} />
-            <span className={cn("block w-5 h-px bg-zinc-900 transition-transform duration-200", menuOpen && "-translate-y-[7px] -rotate-45")} />
+            <span className={cn("block w-5 h-px bg-[#e8e8e8] transition-transform duration-200", menuOpen && "translate-y-[7px] rotate-45")} />
+            <span className={cn("block w-5 h-px bg-[#e8e8e8] transition-opacity duration-200", menuOpen && "opacity-0")} />
+            <span className={cn("block w-5 h-px bg-[#e8e8e8] transition-transform duration-200", menuOpen && "-translate-y-[7px] -rotate-45")} />
           </button>
         </div>
       </header>
@@ -75,7 +76,7 @@ export default function Nav() {
       {/* 移动端全屏抽屉 */}
       <div
         className={cn(
-          "fixed inset-0 z-30 bg-white flex flex-col justify-center items-center gap-10 transition-opacity duration-300 sm:hidden",
+          "fixed inset-0 z-30 bg-[#080808] flex flex-col justify-center items-center gap-10 transition-opacity duration-300 sm:hidden",
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
@@ -83,7 +84,7 @@ export default function Nav() {
           <Link
             key={href}
             href={href}
-            className="text-3xl font-semibold tracking-tight text-zinc-900 hover:text-zinc-400 transition-colors"
+            className="text-3xl font-mono tracking-widest uppercase text-[#e8e8e8] hover:text-[#00F0FF] transition-colors"
           >
             {label}
           </Link>

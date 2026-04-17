@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AboutTeaser() {
   return (
-    <section className="px-6 py-24 border-t border-zinc-100 max-w-7xl mx-auto w-full">
+    <section className="px-6 py-24 border-t border-white/[0.06] max-w-7xl mx-auto w-full">
       <div className="max-w-2xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -13,16 +13,16 @@ export default function AboutTeaser() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <p className="text-xs uppercase tracking-widest text-zinc-400 mb-6">About</p>
-          <p className="text-2xl leading-relaxed text-zinc-700 font-light">
+          <p className="text-xs font-mono tracking-[0.3em] text-[#00F0FF] uppercase mb-6">About</p>
+          <p className="text-2xl leading-relaxed text-white/60 font-light">
             我是一名视觉设计师，相信好的设计源于对问题的深入理解，
             而不仅仅是对形式的追求。
           </p>
           <Link
             href="/about"
-            className="mt-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 transition-colors underline underline-offset-4"
+            className="mt-8 inline-block text-xs font-mono tracking-widest uppercase text-white/30 hover:text-[#00F0FF] transition-colors"
           >
-            了解更多
+            Learn More →
           </Link>
         </motion.div>
       </div>

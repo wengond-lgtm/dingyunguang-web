@@ -13,18 +13,20 @@ export default function FeaturedWorks({ works }: Props) {
   if (works.length === 0) return null;
 
   return (
-    <section className="px-6 py-24 max-w-7xl mx-auto w-full">
+    <section className="px-6 py-24 max-w-7xl mx-auto w-full border-t border-white/[0.06]">
       <div className="flex items-end justify-between mb-12">
-        <h2 className="text-2xl font-semibold tracking-tight">Selected Work</h2>
+        <div>
+          <p className="text-xs font-mono tracking-[0.3em] text-[#00F0FF] uppercase mb-2">Selected Work</p>
+          <h2 className="text-2xl font-semibold tracking-tight">精选项目</h2>
+        </div>
         <Link
           href="/works"
-          className="text-sm text-zinc-400 hover:text-zinc-900 transition-colors"
+          className="text-xs font-mono tracking-widest text-white/30 hover:text-[#00F0FF] transition-colors uppercase"
         >
-          全部作品 →
+          All Works →
         </Link>
       </div>
 
-      {/* 杂志式网格：第一个大图占两列，其余正常 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {works.map((work, i) => (
           <motion.div
@@ -37,7 +39,7 @@ export default function FeaturedWorks({ works }: Props) {
           >
             <Link href={`/works/${work.slug}`} className="group block">
               <div
-                className={`relative overflow-hidden bg-zinc-100 ${
+                className={`relative overflow-hidden bg-white/[0.03] border border-white/[0.06] ${
                   i === 0 ? "aspect-[16/9]" : "aspect-[4/3]"
                 }`}
               >
@@ -47,27 +49,29 @@ export default function FeaturedWorks({ works }: Props) {
                     alt={work.title}
                     fill
                     sizes={i === 0 ? "66vw" : "33vw"}
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover opacity-75 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-zinc-300 text-sm">
-                    No image
+                  <div className="w-full h-full flex items-center justify-center text-white/10 text-xs font-mono tracking-widest">
+                    NO IMAGE
                   </div>
                 )}
+                {/* 角落序号 */}
+                <span className="absolute top-3 right-3 text-xs font-mono text-white/20">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
               </div>
               <div className="mt-3 flex items-start justify-between">
                 <div>
-                  <h3 className="text-sm font-medium group-hover:text-zinc-400 transition-colors">
+                  <h3 className="text-sm font-medium text-white/80 group-hover:text-[#00F0FF] transition-colors">
                     {work.title}
                   </h3>
                   {work.summary && (
-                    <p className="mt-1 text-xs text-zinc-400 line-clamp-1">
-                      {work.summary}
-                    </p>
+                    <p className="mt-1 text-xs font-mono text-white/25 line-clamp-1">{work.summary}</p>
                   )}
                 </div>
                 {work.year && (
-                  <span className="text-xs text-zinc-300 shrink-0 ml-4">{work.year}</span>
+                  <span className="text-xs font-mono text-white/20 shrink-0 ml-4">{work.year}</span>
                 )}
               </div>
             </Link>

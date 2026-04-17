@@ -23,15 +23,18 @@ export default async function WorksPage({ searchParams }: Props) {
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-24">
-      <h1 className="text-3xl font-semibold tracking-tight">Selected Work</h1>
-      <p className="mt-2 text-zinc-400 text-sm">{allWorks.length} 个项目</p>
+      <p className="text-xs font-mono tracking-[0.3em] text-[#00F0FF] uppercase mb-4">Works</p>
+      <div className="flex items-end justify-between">
+        <h1 className="text-3xl font-semibold tracking-tight">Selected Work</h1>
+        <span className="text-xs font-mono text-white/20">{allWorks.length} Projects</span>
+      </div>
 
       <Suspense>
         <WorksFilter />
       </Suspense>
 
       {works.length === 0 ? (
-        <p className="mt-16 text-zinc-400 text-sm">暂无作品</p>
+        <p className="mt-16 text-xs font-mono text-white/20 tracking-widest">NO WORKS FOUND</p>
       ) : (
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
           {works.map((work, i) => (

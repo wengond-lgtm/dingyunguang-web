@@ -5,35 +5,50 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="min-h-[90vh] flex flex-col justify-end px-6 pb-20 max-w-7xl mx-auto w-full">
+    <section className="min-h-[92vh] flex flex-col justify-end px-6 pb-24 max-w-7xl mx-auto w-full">
       <motion.div
         initial={{ opacity: 0, y: 32 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
-        <p className="text-xs uppercase tracking-widest text-zinc-400 mb-6">
-          Visual Designer
-        </p>
-        <h1 className="text-6xl sm:text-8xl font-semibold tracking-tighter leading-none text-zinc-900">
+        {/* 标签行 */}
+        <div className="flex items-center gap-3 mb-8">
+          <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse" />
+          <p className="text-xs font-mono tracking-[0.3em] text-[#00F0FF] uppercase">
+            Visual Designer
+          </p>
+        </div>
+
+        {/* 主标题 */}
+        <h1 className="text-7xl sm:text-[10rem] font-bold tracking-tighter leading-none text-white">
           丁韵光
         </h1>
-        <p className="mt-6 text-lg text-zinc-500 max-w-md leading-relaxed">
-          专注于 3D 动画、视觉设计与品牌创意，
-          <br />
-          将想象力转化为有质感的视觉语言。
-        </p>
-        <div className="mt-10 flex items-center gap-6">
+
+        {/* 副标题 */}
+        <div className="mt-6 flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-12">
+          <p className="text-sm font-mono text-white/40 leading-relaxed max-w-xs">
+            3D Animation · Visual Design<br />
+            Brand Identity · Creative Direction
+          </p>
+          <div className="h-px flex-1 bg-white/[0.06] hidden sm:block" />
+          <p className="text-xs font-mono text-white/25 tracking-widest">
+            EST. 2024
+          </p>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-12 flex items-center gap-6">
           <Link
             href="/works"
-            className="px-6 py-3 bg-zinc-900 text-white text-sm hover:bg-zinc-700 transition-colors"
+            className="group relative px-6 py-3 text-xs font-mono tracking-widest uppercase border border-[#00F0FF]/50 text-[#00F0FF] hover:bg-[#00F0FF] hover:text-[#080808] transition-all duration-200"
           >
-            查看作品
+            View Works
           </Link>
           <Link
             href="/contact"
-            className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors underline underline-offset-4"
+            className="text-xs font-mono tracking-widest uppercase text-white/30 hover:text-white/70 transition-colors"
           >
-            联系合作
+            Get in Touch →
           </Link>
         </div>
       </motion.div>

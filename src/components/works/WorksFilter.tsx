@@ -4,12 +4,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const FILTERS = [
-  { label: "All", value: "" },
+  { label: "ALL", value: "" },
   { label: "3D", value: "3D" },
-  { label: "Web", value: "Web Design" },
-  { label: "Graphic", value: "Graphic" },
-  { label: "Video", value: "Video" },
-  { label: "Photography", value: "Photography" },
+  { label: "WEB", value: "Web Design" },
+  { label: "GRAPHIC", value: "Graphic" },
+  { label: "VIDEO", value: "Video" },
+  { label: "PHOTO", value: "Photography" },
 ];
 
 export default function WorksFilter() {
@@ -19,11 +19,8 @@ export default function WorksFilter() {
 
   function handleFilter(value: string) {
     const params = new URLSearchParams(searchParams.toString());
-    if (value) {
-      params.set("medium", value);
-    } else {
-      params.delete("medium");
-    }
+    if (value) params.set("medium", value);
+    else params.delete("medium");
     router.push(`/works?${params.toString()}`, { scroll: false });
   }
 
@@ -34,10 +31,10 @@ export default function WorksFilter() {
           key={f.value}
           onClick={() => handleFilter(f.value)}
           className={cn(
-            "px-4 py-1.5 text-sm border transition-colors",
+            "px-4 py-1.5 text-xs font-mono tracking-widest border transition-colors",
             current === f.value
-              ? "bg-zinc-900 text-white border-zinc-900"
-              : "border-zinc-200 text-zinc-500 hover:border-zinc-400 hover:text-zinc-900"
+              ? "border-[#00F0FF] text-[#00F0FF] bg-[#00F0FF]/5"
+              : "border-white/[0.08] text-white/30 hover:border-white/20 hover:text-white/60"
           )}
         >
           {f.label}
