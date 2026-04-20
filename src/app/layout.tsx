@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="zh-CN"
       className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#080808] text-[#e8e8e8]">
+      <body className="min-h-full flex flex-col bg-white text-[#0A0A0A]">
         <Nav />
         <div className="flex-1 pt-14">{children}</div>
         <Footer />

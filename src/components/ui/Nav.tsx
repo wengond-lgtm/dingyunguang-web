@@ -28,31 +28,25 @@ export default function Nav() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
-          scrolled
-            ? "bg-[#080808]/90 backdrop-blur-md border-b border-white/[0.06]"
-            : "bg-transparent"
+          "fixed top-0 left-0 right-0 z-40 transition-all duration-200",
+          scrolled ? "bg-white border-b-2 border-[#0A0A0A]" : "bg-transparent"
         )}
       >
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link
-            href="/"
-            className="text-sm font-mono tracking-widest text-[#e8e8e8] hover:text-[#00F0FF] transition-colors"
-          >
-            DYG
+          <Link href="/" className="text-sm font-black uppercase tracking-widest hover:text-[#FF2D20] transition-colors">
+            丁韵光
           </Link>
 
-          {/* 桌面导航 */}
           <nav className="hidden sm:flex items-center gap-8">
             {LINKS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
                 className={cn(
-                  "text-xs tracking-widest uppercase font-mono transition-colors",
+                  "text-xs font-bold uppercase tracking-widest transition-colors",
                   pathname.startsWith(href)
-                    ? "text-[#00F0FF]"
-                    : "text-white/40 hover:text-white/80"
+                    ? "text-[#FF2D20]"
+                    : "text-[#0A0A0A] hover:text-[#FF2D20]"
                 )}
               >
                 {label}
@@ -60,23 +54,22 @@ export default function Nav() {
             ))}
           </nav>
 
-          {/* 移动端汉堡 */}
           <button
             className="sm:hidden flex flex-col gap-1.5 p-1"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="菜单"
           >
-            <span className={cn("block w-5 h-px bg-[#e8e8e8] transition-transform duration-200", menuOpen && "translate-y-[7px] rotate-45")} />
-            <span className={cn("block w-5 h-px bg-[#e8e8e8] transition-opacity duration-200", menuOpen && "opacity-0")} />
-            <span className={cn("block w-5 h-px bg-[#e8e8e8] transition-transform duration-200", menuOpen && "-translate-y-[7px] -rotate-45")} />
+            <span className={cn("block w-6 h-0.5 bg-[#0A0A0A] transition-transform duration-200", menuOpen && "translate-y-2 rotate-45")} />
+            <span className={cn("block w-6 h-0.5 bg-[#0A0A0A] transition-opacity duration-200", menuOpen && "opacity-0")} />
+            <span className={cn("block w-6 h-0.5 bg-[#0A0A0A] transition-transform duration-200", menuOpen && "-translate-y-2 -rotate-45")} />
           </button>
         </div>
       </header>
 
-      {/* 移动端全屏抽屉 */}
+      {/* 移动端全屏菜单 */}
       <div
         className={cn(
-          "fixed inset-0 z-30 bg-[#080808] flex flex-col justify-center items-center gap-10 transition-opacity duration-300 sm:hidden",
+          "fixed inset-0 z-30 bg-[#FF2D20] flex flex-col justify-center items-start px-10 gap-8 transition-opacity duration-200 sm:hidden",
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
@@ -84,7 +77,7 @@ export default function Nav() {
           <Link
             key={href}
             href={href}
-            className="text-3xl font-mono tracking-widest uppercase text-[#e8e8e8] hover:text-[#00F0FF] transition-colors"
+            className="text-5xl font-black uppercase tracking-tight text-white hover:text-[#FFE600] transition-colors"
           >
             {label}
           </Link>
