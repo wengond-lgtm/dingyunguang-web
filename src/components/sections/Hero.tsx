@@ -5,72 +5,63 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[92vh] overflow-hidden">
-      {/* 大色块背景 */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FF2D20] z-0" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FFE600] z-0" />
+    <section className="min-h-[94vh] flex flex-col justify-center max-w-6xl mx-auto px-8 w-full">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        {/* 上方小标签 */}
+        <p className="text-xs tracking-[0.3em] uppercase text-[#888888] font-light mb-12">
+          Visual Designer — Beijing
+        </p>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 h-full min-h-[92vh] flex flex-col justify-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+        {/* 衬线大标题 */}
+        <h1
+          className="text-[clamp(3.5rem,9vw,8rem)] font-normal leading-[1.05] tracking-tight text-[#111111]"
+          style={{ fontFamily: "var(--font-serif)" }}
         >
-          {/* 标签 */}
-          <motion.p
-            initial={{ x: -40, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xs font-bold uppercase tracking-[0.4em] text-[#0A0A0A] mb-6"
-          >
-            Visual Designer
-          </motion.p>
+          丁韵光
+        </h1>
 
-          {/* 超大主标题——跨越色块 */}
-          <div className="overflow-hidden">
-            <motion.h1
-              initial={{ y: 120 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[clamp(5rem,16vw,14rem)] font-black leading-none tracking-tighter text-[#0A0A0A] mix-blend-multiply"
+        {/* 副标题 */}
+        <p
+          className="mt-4 text-[clamp(1.5rem,4vw,3.5rem)] font-normal leading-[1.1] tracking-tight text-[#888888]"
+          style={{ fontFamily: "var(--font-serif)" }}
+        >
+          3D Animation & Visual Design
+        </p>
+
+        {/* 分割线 */}
+        <div className="my-12 w-16 border-t border-[#111111]" />
+
+        {/* 介绍文字 + CTA */}
+        <div className="flex flex-col sm:flex-row sm:items-end gap-10">
+          <p className="text-sm text-[#888888] font-light leading-relaxed max-w-xs">
+            专注于 3D 动画、视觉设计与品牌创意，
+            将想象力转化为有质感的视觉语言。
+          </p>
+          <div className="flex items-center gap-8">
+            <Link
+              href="/works"
+              className="text-xs tracking-[0.2em] uppercase font-light border-b border-[#111111] pb-0.5 hover:text-[#888888] hover:border-[#888888] transition-colors"
             >
-              丁韵光
-            </motion.h1>
+              View Works
+            </Link>
+            <Link
+              href="/contact"
+              className="text-xs tracking-[0.2em] uppercase font-light text-[#888888] hover:text-[#111111] transition-colors"
+            >
+              Get in Touch
+            </Link>
           </div>
+        </div>
+      </motion.div>
 
-          {/* 副标题行 */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-8 flex flex-col sm:flex-row sm:items-center gap-6"
-          >
-            <p className="text-sm font-medium text-[#0A0A0A] max-w-xs leading-relaxed">
-              3D Animation · Visual Design<br />
-              Brand Identity · Creative Direction
-            </p>
-            <div className="flex items-center gap-4">
-              <Link
-                href="/works"
-                className="px-8 py-4 bg-[#0A0A0A] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#FF2D20] transition-colors"
-              >
-                View Works
-              </Link>
-              <Link
-                href="/contact"
-                className="px-8 py-4 border-2 border-[#0A0A0A] text-xs font-bold uppercase tracking-widest hover:bg-[#FFE600] transition-colors"
-              >
-                Contact
-              </Link>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* 底部装饰线 */}
-      <div className="absolute bottom-8 left-6 right-6 flex items-center justify-between z-10">
-        <span className="text-xs font-bold tracking-widest text-[#0A0A0A]/40 uppercase">Portfolio 2024</span>
-        <span className="text-xs font-bold tracking-widest text-[#0A0A0A]/40 uppercase">dingyunguang.com</span>
+      {/* 底部页码装饰 */}
+      <div className="absolute bottom-10 right-8 flex items-center gap-3">
+        <div className="w-6 border-t border-[#E5E5E5]" />
+        <span className="text-xs text-[#E5E5E5] tracking-widest font-light">01</span>
       </div>
     </section>
   );

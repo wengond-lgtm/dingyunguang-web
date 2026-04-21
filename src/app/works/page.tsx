@@ -4,7 +4,7 @@ import { getAllWorks } from "@/lib/notion";
 import WorkCard from "@/components/works/WorkCard";
 import WorksFilter from "@/components/works/WorksFilter";
 
-export const metadata: Metadata = { title: "作品" };
+export const metadata: Metadata = { title: "Works" };
 export const revalidate = 60;
 
 interface Props {
@@ -22,27 +22,29 @@ export default async function WorksPage({ searchParams }: Props) {
     : allWorks;
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-24">
-      {/* 大标题 */}
-      <div className="border-t-4 border-[#0A0A0A] pt-8 mb-4">
-        <h1 className="text-6xl sm:text-9xl font-black uppercase tracking-tighter leading-none">
-          Works
+    <main className="max-w-6xl mx-auto px-8 py-24">
+      <div className="border-t border-[#E5E5E5] pt-8 mb-4 flex items-baseline justify-between">
+        <h1
+          className="text-4xl sm:text-6xl font-normal tracking-tight text-[#111111]"
+          style={{ fontFamily: "var(--font-serif)" }}
+        >
+          Selected Work
         </h1>
+        <span className="text-xs font-light text-[#BBBBBB] tracking-widest">
+          {allWorks.length} Projects
+        </span>
       </div>
-      <p className="text-xs font-bold uppercase tracking-widest text-[#0A0A0A]/30">
-        {allWorks.length} Projects
-      </p>
 
       <Suspense>
         <WorksFilter />
       </Suspense>
 
       {works.length === 0 ? (
-        <p className="mt-16 text-xs font-bold uppercase tracking-widest text-[#0A0A0A]/30">
-          No Works Found
+        <p className="mt-16 text-xs tracking-[0.2em] uppercase font-light text-[#BBBBBB]">
+          No works found.
         </p>
       ) : (
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {works.map((work, i) => (
             <WorkCard key={work.id} work={work} index={i} />
           ))}

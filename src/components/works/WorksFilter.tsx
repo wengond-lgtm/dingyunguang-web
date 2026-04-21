@@ -4,12 +4,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const FILTERS = [
-  { label: "ALL", value: "" },
+  { label: "All", value: "" },
   { label: "3D", value: "3D" },
-  { label: "WEB", value: "Web Design" },
-  { label: "GRAPHIC", value: "Graphic" },
-  { label: "VIDEO", value: "Video" },
-  { label: "PHOTO", value: "Photography" },
+  { label: "Web", value: "Web Design" },
+  { label: "Graphic", value: "Graphic" },
+  { label: "Video", value: "Video" },
+  { label: "Photography", value: "Photography" },
 ];
 
 export default function WorksFilter() {
@@ -25,16 +25,16 @@ export default function WorksFilter() {
   }
 
   return (
-    <div className="flex flex-wrap gap-2 mt-8">
+    <div className="flex flex-wrap gap-6 mt-8 border-b border-[#E5E5E5] pb-8">
       {FILTERS.map((f) => (
         <button
           key={f.value}
           onClick={() => handleFilter(f.value)}
           className={cn(
-            "px-5 py-2 text-xs font-bold uppercase tracking-widest border-2 transition-colors",
+            "text-xs tracking-[0.15em] uppercase font-light transition-colors",
             current === f.value
-              ? "bg-[#FF2D20] border-[#FF2D20] text-white"
-              : "border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#FFE600] hover:border-[#FFE600]"
+              ? "text-[#111111] border-b border-[#111111] pb-0.5"
+              : "text-[#BBBBBB] hover:text-[#111111]"
           )}
         >
           {f.label}

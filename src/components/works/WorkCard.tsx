@@ -5,59 +5,51 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Work } from "@/types/work";
 
-const ACCENT_COLORS = ["#FF2D20", "#FFE600", "#0A0A0A"];
-
 interface Props {
   work: Work;
   index: number;
 }
 
 export default function WorkCard({ work, index }: Props) {
-  const accent = ACCENT_COLORS[index % ACCENT_COLORS.length];
-  const isLight = accent === "#FFE600";
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: index * 0.05 }}
+      transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
     >
       <Link href={`/works/${work.slug}`} className="group block">
-        <div className="relative overflow-hidden aspect-[4/3]" style={{ background: "#F0F0F0" }}>
+        <div className="relative overflow-hidden bg-[#F0F0F0] aspect-[4/3]">
           {work.thumbnail ? (
             <Image
               src={work.thumbnail}
               alt={work.title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             />
           ) : (
-            <div
-              className="w-full h-full flex items-center justify-center text-lg font-black uppercase"
-              style={{ background: accent, color: isLight ? "#0A0A0A" : "white" }}
-            >
-              {work.title}
+            <div className="w-full h-full bg-[#E8E8E8] flex items-center justify-center">
+              <span className="text-xs tracking-[0.2em] uppercase text-[#BBBBBB] font-light">No Image</span>
             </div>
           )}
-          {/* hover 색 오버레이 */}
-          <div
-            className="absolute inset-0 opacity-0 group-hover:opacity-95 transition-opacity duration-300 flex flex-col justify-end p-5"
-            style={{ background: accent }}
-          >
-            <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: isLight ? "#0A0A0A" : "white" }}>
-              {work.medium[0]}
-            </p>
-            <h3 className="text-xl font-black leading-tight" style={{ color: isLight ? "#0A0A0A" : "white" }}>
-              {work.title}
-            </h3>
-          </div>
         </div>
-        <div className="mt-2 flex items-center justify-between">
-          <h2 className="text-sm font-bold uppercase tracking-wide group-hover:text-[#FF2D20] transition-colors">
-            {work.title}
-          </h2>
-          {work.year && <span className="text-xs font-bold text-[#0A0A0A]/25">{work.year}</span>}
+        <div className="mt-4 flex items-start justify-between">
+          <div>
+            <h2
+              className="text-base font-normal text-[#111111] group-hover:text-[#888888] transition-colors"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              {work.title}
+            </h2>
+            {work.medium.length > 0 && (
+              <p className="mt-1 text-xs tracking-[0.15em] uppercase font-light text-[#BBBBBB]">
+                {work.medium[0]}
+              </p>
+            )}
+          </div>
+          {work.year && (
+            <span className="text-xs font-light text-[#BBBBBB] shrink-0 ml-4">{work.year}</span>
+          )}
         </div>
       </Link>
     </motion.div>

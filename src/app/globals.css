@@ -5,21 +5,22 @@ html {
 }
 
 *:focus-visible {
-  outline: 3px solid #FF2D20;
-  outline-offset: 2px;
+  outline: 1px solid #111111;
+  outline-offset: 3px;
 }
 
 :root {
-  --red: #FF2D20;
-  --yellow: #FFE600;
-  --black: #0A0A0A;
-  --white: #FFFFFF;
-  --gray: #F0F0F0;
+  --black: #111111;
+  --white: #FAFAFA;
+  --gray: #888888;
+  --border: #E5E5E5;
 }
 
 body {
   background: var(--white);
   color: var(--black);
-  font-family: var(--font-geist-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
-  overflow-x: hidden;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
 }
